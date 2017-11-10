@@ -1,6 +1,7 @@
 package database;
 
 import java.io.IOException;
+import java.io.InvalidClassException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -25,7 +26,7 @@ public class SerializeDB
 			ex.printStackTrace();
 		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
-		}
+		}			
 		// print out the size
 		//System.out.println(" Details Size: " + pDetails.size());
 		//System.out.println();

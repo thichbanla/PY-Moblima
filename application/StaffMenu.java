@@ -26,10 +26,10 @@ public class StaffMenu {
 			list = (ArrayList) SerializeDB.readSerializedObject("Staff.ser");
 			
 			for(int i=0;i<list.size();i++){
-				Staff s = (Staff)list.get(i);
+				Person s = (Staff)list.get(i);
 
-				if(s.getStaffID().equals(id)){
-					if(s.getPassword().equals(pw)){
+				if(s.getID().equals(id)){
+					if(s.getPW().equals(pw)){
 						return true;
 					}
 				}

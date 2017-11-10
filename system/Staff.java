@@ -8,8 +8,8 @@ import database.SerializeDB;
 
 public class Staff extends Person implements Serializable{
 	
-	private String staffID;
-	private String password;
+//	private String staffID;
+	//private String password;
 	
 	public Staff() {
 	}
@@ -18,13 +18,13 @@ public class Staff extends Person implements Serializable{
 		super(name, id, pw, mail, contact);
 	}
 
-	public String getStaffID() {
+	/*public String getStaffID() {
 		return staffID;
 	}
 
 	public String getPassword() {
 		return password;
-	}
+	}*/
 	
 	public boolean equals(Object o) {
 		if (o instanceof Staff) {
