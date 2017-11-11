@@ -1,4 +1,4 @@
-package system;
+package entity;
 
 import java.io.*;
 
@@ -44,14 +44,12 @@ public class Person implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public String getID()
-	{
+
+	public String getID() {
 		return id;
 	}
-	
-	public String getPW()
-	{
+
+	public String getPW() {
 		return pw;
 	}
 
@@ -59,5 +57,4 @@ public class Person implements Serializable {
 	public boolean login() {
 		return false;
 	}
-
 }

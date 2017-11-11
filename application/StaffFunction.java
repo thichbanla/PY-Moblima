@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
 
-import system.*;
 import database.SerializeDB;
+import entity.*;
 
 public class StaffFunction {
 	

@@ -1,4 +1,4 @@
-package system;
+package entity;
 import java.io.*;
 
 public class MovieSeat implements Serializable{

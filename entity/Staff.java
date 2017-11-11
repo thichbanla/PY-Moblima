@@ -1,15 +1,22 @@
-package system;
+package entity;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import application.Login;
+import application.MovieMgr;
 import database.SerializeDB;
 
 public class Staff extends Person implements Serializable{
-	
-//	private String staffID;
-	//private String password;
+	/**
+	 * Used during deserialization to verify that the sender and receiver of a serialized object have loaded 
+	 * classes for that object that are compatible with respect to serialization 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String staffId;
+	private String password;
 	
 	public Staff() {
 	}
@@ -41,7 +48,7 @@ public class Staff extends Person implements Serializable{
 	}
 	
 	public void addMovie() {
-		MovieSystem ms = new MovieSystem();
+		MovieMgr ms = new MovieMgr();
 		if(!(ms.addMovieToDB()))
 			System.out.println("Error adding it into database");
 		else
@@ -49,7 +56,7 @@ public class Staff extends Person implements Serializable{
 	}
 	
 	public void editMovieDB() {
-		MovieSystem ms = new MovieSystem();
+		MovieMgr ms = new MovieMgr();
 		ms.editMovieDB();
 	}
 }

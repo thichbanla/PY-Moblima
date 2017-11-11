@@ -1,5 +1,11 @@
-package system;
+package entity;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+
+import application.BookingSystem;
+import application.Login;
+import database.SerializeDB;
 
 public class MovieGoer extends Person implements Serializable {
 

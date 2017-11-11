@@ -1,4 +1,6 @@
-package system;
+package application;
+
+import entity.MovieTicket;
 
 public class BookingSystem {
 	
