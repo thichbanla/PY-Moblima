@@ -1,4 +1,4 @@
-package entity;
+/*package entity;
 
 import java.io.Serializable;
 
@@ -56,3 +56,4 @@ public class MovieListing implements Serializable{
 	}
 		
 }
+*/
