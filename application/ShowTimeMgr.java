@@ -19,63 +19,68 @@ public class ShowTimeMgr {
 
 		// check if the movie status is NOW_SHOWING
 		boolean showing = isNowShowing(movie);
-
 		// check if there is a same dateTime(assume movie is 2 hour), at that particular
 		// cineplex and cinema
 		boolean clash = isClash(dateTime, cineplex, cinema);
 
-		if (clash || !showing) {
-			// writeToFile(showTimeEntity, FILE_PATH);
+		if (clash || !showing) {		
 			return false;
 		}
 
-		ShowTime show = new ShowTime(dateTime, cineplex, cinema, movie);
-		// showTimeEntity.getShowTime().add(show);
-		// writeToFile(showTimeEntity, FILE_PATH);
+		ShowTime st = new ShowTime(dateTime, cineplex, cinema, movie);
+		ArrayList<ShowTime> stList = new ArrayList<>();
+		stList.add(st);
+		SerializeDB.writeSerializedObject("ShowTime.ser", stList);
 		return true;
 	}
 
 	public void deleteShowTime(Movie movie) {
-		String movieName = movie.getMovieName();
-		/*
-		 * showTimeEntity = (ShowTimeEntity) openEntity(ShowTimeEntity.class,FILE_PATH);
-		 * 
-		 * ArrayList<ShowTime> show = showTimeEntity.getShowTime();
-		 * 
-		 * for(int i = 0;i<show.size();i++){
-		 * if(show.get(i).getMovie().getName().compareTo(movieName)==0){
-		 * showTimeEntity.getShowTime().remove(i); i--; } } writeToFile(showTimeEntity,
-		 * FILE_PATH);
-		 */
+		String movieName = movie.getMovieName();		
+		ArrayList<ShowTime> stList = new ArrayList<>();
+		stList = (ArrayList<ShowTime>) SerializeDB.readSerializedObject("ShowTime.ser");
+		
+		for(int i=0;i<stList.size();i++)
+		{
+			if((stList.get(i).getMovie().getMovieName()).compareTo(movieName) ==0)
+			{
+				stList.remove(i);
+			}
+		}
+		
+		SerializeDB.writeSerializedObject("ShowTime.ser", stList);
 	}
 
-	/*public void deleteShowTime(Cineplex cineplex){
+	public void deleteShowTime(Cineplex cineplex){
 		String cineplexName = cineplex.getName();
-		showTimeEntity = (ShowTimeEntity) openEntity(ShowTimeEntity.class,FILE_PATH);
-
-		int index = 0;
-
-		for (ShowTime time : showTimeEntity.getShowTime()) {
-			if(time.getCineplex().getName().compareTo(cineplexName)==0){
-				showTimeEntity.getShowTime().remove(index);
-			}
-			index++;
-		}
-		writeToFile(showTimeEntity, FILE_PATH);
-	}*/
 	
-	/*public boolean deleteShowTime(GregorianCalendar dateTime, String cineplexName, String movieName, int cinemaId){
-	showTimeEntity = (ShowTimeEntity) openEntity(ShowTimeEntity.class,FILE_PATH);
+		ArrayList<ShowTime> stList = new ArrayList<>();
+		stList = (ArrayList<ShowTime>) SerializeDB.readSerializedObject("ShowTime.ser");
+		
+		for(int i=0;i<stList.size();i++)
+		{
+			if((stList.get(i).getCineplex().getName()).compareTo(cineplexName)==0)				
+				stList.remove(i);			
+		}
+		
+		SerializeDB.writeSerializedObject("ShowTime.ser", stList);
+	}
+	
+	public boolean deleteShowTime(GregorianCalendar dateTime, String cineplexName, String movieName, int cinemaId){
+		ArrayList<ShowTime> stList = new ArrayList<>();
+		stList = (ArrayList<ShowTime>) SerializeDB.readSerializedObject("ShowTime.ser");
 
 		ShowTime showTime = getShowTime(dateTime, cineplexName, movieName, cinemaId);
 		if(showTime==null){
 			return false;
 		}
-		showTimeEntity.getShowTime().remove(showTime);
-		
-		writeToFile(showTimeEntity, FILE_PATH);
+		for(int i=0;i<stList.size();i++)
+		{
+			if((stList.get(i).get				
+				stList.remove(i);			
+		}
+		SerializeDB.writeSerializedObject("ShowTime.ser", stList);
 		return true;
-	}*/
+	}
 
 	public ArrayList<ShowTime> queryShowTime(GregorianCalendar dateTime, String cineplex, String movie) {
 		// showTimeEntity = (ShowTimeEntity) openEntity(ShowTimeEntity.class,FILE_PATH);
